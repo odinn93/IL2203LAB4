@@ -8,18 +8,7 @@ package microcode is
     subtype immediate is std_logic_vector(8 downto 0);
     subtype instruction is std_logic_vector(15 downto 0); --16bits instruction
 
-    --type uPC_substate_type is (S_BASIC, S_PC, S_PCinc, S_NOP, S_LD, S_ST);
-    --subtype uPC_state_type is std_logic_vector(1 downto 0);
-
     type program is array(natural range <>) of Instruction; --M registers each of N bits (2^M addresses)
-    --constant uPC0 : uPC_state_type := "00";
-   -- constant uPC1 : uPC_state_type := "01";
-   -- constant uPC2 : uPC_state_type := "10";
-   -- constant uPC3 : uPC_state_type := "11";
-   
-    
-    
-    --constant Tail3 : reg_code := (others => '0');   
     
     --opcodes for instructions
 
@@ -52,15 +41,5 @@ package microcode is
     constant R7 : reg_code := "111";
 
     constant NU:reg_code:= "000";
-    --constant opSUM : op_alu := "000";
-    --constant opSUB : op_alu := "001";
-    --constant opAND : op_alu := "010";
-    --constant opOR : op_alu := "011";
-    --constant opXOR : op_alu := "100";
-	--constant opNOT : op_alu := "101";
-    --constant opA : op_alu := "110";
-    --constant opINC : op_alu := "111";
-
     
-
 end microcode;

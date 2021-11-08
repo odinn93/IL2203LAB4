@@ -1,15 +1,3 @@
-
---date: 14/10/21
---update
---the error we are getting now is with the ADD process. the previous error regarding the LDI was fixed by
---changing values in ALU file. in the process of rst we included more variables.
---now the error is that we are adding a positive and negative number r(0)+r(1) and the result is r(0) which is wrong.
-
--- be aware! ALL INPUTS ARE STD LOGIC VECTOR ATM. IN CASE SOMETHING STILL DEPENDS ON SIGNED.
-
-
-
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -50,7 +38,6 @@ architecture behave of FSM is
     signal ALU_Output                   :   std_logic_vector (n-1 downto 0);
     signal ALU_Enable                   :   std_logic;
 
-    --signal clk_out : std_logic;   WHERE??REGISTER FILE?? 
 begin
     datapath_file :  entity work.datapath_structural
         generic map (
@@ -58,41 +45,36 @@ begin
                     M => M
                     )
         port    map (
-                    ie => ie,--
-                    oe => oe,   -- 
-                    clk => clk,--
-                    rst => rst,--
-                    offset => offset,--
-                    bypassA => bypassA,--
-                    bypassB => bypassB,--
-                    write => write,--
-                    readA => readA,--
-                    readB => readB,--
-                    Z_Flag => Z_Flag,--
-                    N_Flag => N_Flag,--
-                    O_Flag => O_Flag,--
-                   -- clk_out = >clk_out --
-                    Op => Op,--
-                    WAddr => WAddr,--
-                    RA => RA,--
-                    RB => RB,--
-                    input1 => Din,--
-                    output => ALU_output,--
-                    en => ALU_Enable  --
+                    ie          => ie,
+                    oe          => oe,
+                    clk         => clk,
+                    rst         => rst,
+                    offset      => offset,
+                    bypassA     => bypassA,
+                    bypassB     => bypassB,
+                    write       => write,
+                    readA       => readA,
+                    readB       => readB,
+                    Z_Flag      => Z_Flag,
+                    N_Flag      => N_Flag,
+                    O_Flag      => O_Flag,
+                    Op          => Op,
+                    WAddr       => WAddr,
+                    RA          => RA,
+                    RB          => RB,
+                    input1      => Din,
+                    output      => ALU_output,
+                    en          => ALU_Enable  
                 );
-    --end component;
-    --try uncommenting all changes to these (except the ones in 000) and reset the values in the 100 case, maybe 011 case
-    
-    --testing
+
     test_alu <= alu_output;
     Z_Flag_test <= Z_Flag_Latch;
     N_Flag_test <= N_Flag_Latch;
     O_Flag_test <= O_Flag_Latch;
     
-    
     process (clk, rst)
     begin
-        if (rst='1') then --let time for the memory to fetch first instruction
+        if (rst='1') then
             upc<="100";
             address<=(others=>'0');
             Dout <= (others=>'0');
@@ -134,8 +116,6 @@ begin
                                 IE <= '0';                  --Input Enable
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iSUB =>
                                 Write <= '1';               --Disable Write
@@ -149,8 +129,6 @@ begin
                                 IE <= '0';                  --Input Enable
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iAND =>
                                 Write <= '1';               --Disable Write
@@ -164,8 +142,6 @@ begin
                                 IE <= '0';                  --Input Enable
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iOR =>
                                 Write <= '1';               --Disable Write
@@ -179,8 +155,6 @@ begin
                                 IE <= '0';                  --Input Enable
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iXOR =>
                                 Write <= '1';               --Disable Write
@@ -194,8 +168,6 @@ begin
                                 IE <= '0';                  --Input Enable
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iNOT =>
                                 Write <= '1';               --Disable Write
@@ -208,8 +180,6 @@ begin
                                 IE <= '0';                  --Input Enable
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                               -- upc <= "01"; 
 
                             when iMOV =>
                                 Write <= '1';               --Disable Write
@@ -223,8 +193,6 @@ begin
                                 IE <= '0';                  --Input Enable
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iNOP =>
                                 Write <= '1';               --Disable Write
@@ -234,8 +202,6 @@ begin
                                 bypassA <= '0';             --Disable BypassA
                                 op <= "111";                --set operant value
                                 WAddr <= R7;                --set write address to pc register
-                            
-                                --NOT SURE
 
                             when iLD =>
                                 Write <= '0';               --Disable Write
@@ -248,10 +214,7 @@ begin
                                 op <= "110";                   --Load operant value
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
-                                -- NOT SURE
                             when iST =>
                                 Write <= '0';               --Disable Write
                                 ALU_Enable <= '1';          --Enable ALU
@@ -263,9 +226,6 @@ begin
                                 op <= "110";                   --Load operant value
                                 BypassA <= '0';             --Disable BypassA
                                 BypassB <= '0';             --Disable BypassB
-                                --wait for 1 ns;
-                                --upc <= "01"; 
-
 
                             when iLDI =>
                                 Write <= '1';               --ENable Write
@@ -278,8 +238,6 @@ begin
                                 BypassA <= '1';             --Enable BypassA 
                                 BypassB <= '0';             --Disable BypassB
                                 offset<= std_logic_vector(resize(signed (Din(8 downto 0)),offset'length));
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iBRZ =>
                                 ALU_Enable <= '1';          --Enable ALU
@@ -296,8 +254,6 @@ begin
                                     bypassB <= '1';
                                     Op <= "111";
                                 end if;
-                                --wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iBRN =>
                                 ALU_Enable <= '1';          --Enable ALU
@@ -314,9 +270,6 @@ begin
                                     bypassB <= '1';
                                     Op <= "111";
                                 end if;
-                                --wait for 1 ns;
-                                --upc <= "01"; 
-
 
                             when iBRO =>
                                 ALU_Enable <= '1';          --Enable ALU
@@ -333,8 +286,6 @@ begin
                                     bypassB <= '1';
                                     Op <= "111";
                                 end if;
-                               -- wait for 1 ns;
-                                --upc <= "01"; 
 
                             when iBRA =>
                                     ALU_enable <='1';       --Enable ALU
@@ -343,9 +294,7 @@ begin
                                     BypassA <= '0';         --Disable BypassA
                                     BypassB <= '1';         --Enable BypassB
                                     op <="000";             --set op code
-                                    offset <= std_logic_vector(resize(signed(Din(11 downto 0)), offset'length));    --set offset                       --set offset
-                                    --wait for 1 ns;
-                                    --upc <= "01"; 
+                                    offset <= std_logic_vector(resize(signed(Din(11 downto 0)), offset'length));    --set offset    
 
                             when others =>                  --DISABLE ALL
                                 Write <= '0';               --Disable Write
@@ -359,8 +308,7 @@ begin
                                 ie <= '0';
                                 WAddr <= rx;
                                 oe <= '0';
-                               -- wait for 1 ns;
-                                --upc <= "01"; 
+
                         end case;
 
                     when "001" =>
@@ -372,9 +320,6 @@ begin
                                 bypassB <= '1';                 --Enable bypassB - increment PC
                                 bypassA <= '0';                 --Disable bypassA
                                 op <= "111";
-                                
-                                --If we set this as R2, we get the correct result for addition.
-                                --It makes sense, but why doesn't the normal addition work?
                                 Waddr <= R7;               --set write address to the register
 
 
