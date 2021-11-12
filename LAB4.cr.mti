@@ -1,15 +1,4 @@
-C:/altera/13.0sp1/IL2203/LAB4/test_datapath.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/test_datapath.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_SIGNED
--- Compiling entity lab3testing
--- Compiling architecture test_datapath of lab3testing
-
-} {} {}} C:/altera/13.0sp1/IL2203/LAB4/FSM.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/FSM.vhd
+C:/altera/13.0sp1/IL2203/LAB4/FSM.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/FSM.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -23,6 +12,17 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STD_LOGIC_SIGNED
 -- Loading entity DATAPATH_STRUCTURAL
 
+} {} {}} C:/altera/13.0sp1/IL2203/LAB4/test_datapath.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/test_datapath.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Compiling entity lab3testing
+-- Compiling architecture test_datapath of lab3testing
+
 } {} {}} C:/altera/13.0sp1/IL2203/LAB4/clockdiv.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/clockdiv.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -32,17 +32,7 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity clockdiv
 -- Compiling architecture behavior of clockdiv
 
-} {} {}} C:/altera/13.0sp1/IL2203/LAB4/fake_memory.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/fake_memory.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package microcode
--- Compiling entity fake_memory
--- Compiling architecture fake of fake_memory
-
-} {} {}} C:/altera/13.0sp1/IL2203/LAB4/ALU.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/ALU.vhd
+} {} {}} C:/altera/13.0sp1/IL2203/LAB4/ALU.vhd {1 {vcom -work work -2002 -explicit {C:\altera\13.0sp1\IL2203\LAB4\ALU.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -101,6 +91,21 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling package microcode
+
+} {} {}} C:/altera/13.0sp1/IL2203/LAB4/occ2.vhd {1 {vcom -work work -2002 -explicit {C:\altera\13.0sp1\IL2203\LAB4\occ2.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity one_chip_computer
+-- Compiling architecture top of one_chip_computer
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package microcode
+-- Loading entity FSM
+-- Loading entity gpio
+-- Loading entity memory
 
 } {} {}} C:/altera/13.0sp1/IL2203/LAB4/datapath.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/datapath.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012

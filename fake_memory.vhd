@@ -9,14 +9,14 @@ USE altera_mf.all;
 USE work.microcode.all;
 
 ENTITY fake_memory IS
-	PORT
-	(
-		address		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
-		clock		: IN STD_LOGIC  := '1';
-		data		: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-		wren		: IN STD_LOGIC ;
-		q			: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
-	);
+	--PORT
+	--(
+	--	address		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+	--	clock		: IN STD_LOGIC  := '1';
+	--	data		: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+	--	wren		: IN STD_LOGIC ;
+	--	q			: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+	--);
 END fake_memory;
 
 
@@ -47,17 +47,65 @@ ARCHITECTURE fake OF fake_memory IS
 
 		others=>(iNOP & R0 & R0 & R0 & NU));
 
-	signal wren_out : std_logic;
-
-BEGIN
-	process(clock)
+		signal address, Din, Dout : std_logic_vector(15 downto 0);
+		signal clk, reset : std_logic := '0';
+		signal RW : std_logic;
+	
+		--File variable
+		--file memory_hex_output : text;
+		--signal initialized : std_logic := '0';
 	begin
- 		if (rising_edge(clock)  and wren_out = '1') then
- 			RAM(to_integer(unsigned(address))) <= data;
- 		end if;
- 		if (rising_edge(clock)) then
- 			wren_out <= wren;
- 			q <= RAM(to_integer(unsigned(address)));
- 		end if;
- 	end process;
+		clk <= not clk after 1 ns;	
+	
+	
+		-- process(clk)
+		-- begin
+		--     if rising_edge(clk)
+		-- end process;
+	
+	
+		-- print_hex : process(clk)
+		--     variable instruction_line : line;
+		-- begin
+		--     if rising_edge(clk) then
+		--         if (initialized = '0') then
+		--             file_open(memory_hex_output, "output.txt", write_mode);
+		--             initialized <= '1';
+		--         end if;
+		--         if (address = "11111111") then
+		--             file_close(memory_hex_output);
+		--             assert(false) report "DONE" severity failure;
+		--         end if;
+		--         write(instruction_line, RAM(to_integer(unsigned(address(7 downto 0)))), right, 16);
+		--         writeline(memory_hex_output, instruction_line);
+		--         address <= address + 1;
+		--     end if;
+		-- end process;
+	
+		cpu_inst: entity work.FSM
+		port map (
+		  clk     => clk,
+		  rst   => reset,
+		  Din     => Din,
+		  address => address,
+		  Dout    => Dout,
+		  RW      => RW
+		);
+	
+		PROC : process
+			variable I : integer := 0;
+		begin
+			wait until rising_edge(clk);
+			reset <= '1';
+			wait until rising_edge(clk);
+			reset <= '0';
+			while (I < 255) loop
+			    Din <= RAM(I);
+			    I := I + 1;
+			    wait until rising_edge(clk);
+			    wait until rising_edge(clk);
+			    wait until rising_edge(clk);
+			    wait until rising_edge(clk);
+			end loop;
+		end process;
 END fake;

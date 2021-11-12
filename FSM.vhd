@@ -502,7 +502,7 @@ begin
                                     RB <= Rx;
                             end case;
                         
-                    when "011"=>
+                    when "011" =>
                         case instruction_register (15 downto 12) is
                             when iST =>
                             RW<='0';
