@@ -50,6 +50,7 @@ ARCHITECTURE fake OF fake_memory IS
 		signal address, Din, Dout : std_logic_vector(15 downto 0);
 		signal clk, reset : std_logic := '0';
 		signal RW : std_logic;
+		signal led_output : std_logic_vector(15 downto 0);
 	
 		--File variable
 		--file memory_hex_output : text;
@@ -89,7 +90,8 @@ ARCHITECTURE fake OF fake_memory IS
 		  Din     => Din,
 		  address => address,
 		  Dout    => Dout,
-		  RW      => RW
+		  RW      => RW,
+		  test_alu => led_output
 		);
 	
 		PROC : process

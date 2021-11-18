@@ -1,3 +1,5 @@
+--Data in gpio is always zero, and that can be traced back to Output of Datapath.vhd.
+--Something incompatible with regards to Zachs datapath?
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -10,7 +12,7 @@ entity occ is
       clk_out : out std_logic;
       Z_Flag, N_Flag, O_Flag : out std_logic --TESTING
   );
-end entity;
+end entity;s
 
 architecture top of occ is
 
@@ -52,8 +54,8 @@ begin
       RW      => RW_tmp,
       Z_Flag_test => Z_Flag,
       N_Flag_test => N_Flag,
-      O_Flag_test => O_Flag,
-      test_alu => led_output
+      O_Flag_test => O_Flag
+      --test_alu => led_output
   );
 
   gpio_inst: entity work.gpio(behave)
@@ -69,18 +71,17 @@ begin
       Dout  => led_output
   );
 
-  memory_inst: entity work.fake_memory(fake);
-  --port map (
-  --    address => address_tmp(7 downto 0),
-  --    clock   => clk_divided,
-  --    data    => Dout_tmp,
-  --    wren    => wren_activator,
-  --    q       => Din_tmp
-  --);
+  memory_inst: entity work.memory(syn)
+  port map (
+      address => address_tmp(7 downto 0),
+      clock   => clk_divided,
+      data    => Dout_tmp,
+      wren    => wren_activator,
+      q       => Din_tmp
+  );
 
   ie_activator <= '1' when (address_tmp = "1111000000000000" and (RW_tmp = '0')) else '0';
   oe_activator <= '1';
   clk_out <= clk_divided;
   wren_activator <= (not RW_tmp) when (to_integer(unsigned(address_tmp)) < 256) else '0';
-  led_output <= address_tmp;
 end architecture;

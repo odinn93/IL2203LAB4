@@ -1,18 +1,4 @@
-C:/altera/13.0sp1/IL2203/LAB4/FSM.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/FSM.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Loading package microcode
--- Compiling entity FSM
--- Compiling architecture behave of FSM
--- Loading package STD_LOGIC_SIGNED
--- Loading entity DATAPATH_STRUCTURAL
-
-} {} {}} C:/altera/13.0sp1/IL2203/LAB4/test_datapath.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/test_datapath.vhd
+C:/altera/13.0sp1/IL2203/LAB4/test_datapath.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/test_datapath.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -22,26 +8,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STD_LOGIC_SIGNED
 -- Compiling entity lab3testing
 -- Compiling architecture test_datapath of lab3testing
-
-} {} {}} C:/altera/13.0sp1/IL2203/LAB4/clockdiv.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/clockdiv.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity clockdiv
--- Compiling architecture behavior of clockdiv
-
-} {} {}} C:/altera/13.0sp1/IL2203/LAB4/ALU.vhd {1 {vcom -work work -2002 -explicit {C:\altera\13.0sp1\IL2203\LAB4\ALU.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity ALU
--- Compiling architecture behavior of ALU
 
 } {} {}} C:/altera/13.0sp1/IL2203/LAB4/test_register_file.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/test_register_file.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -85,13 +51,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity FSM_tb
 -- Compiling architecture test_cpu_advanced of FSM_tb
 
-} {} {}} C:/altera/13.0sp1/IL2203/LAB4/microcode.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/microcode.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling package microcode
-
 } {} {}} C:/altera/13.0sp1/IL2203/LAB4/occ2.vhd {1 {vcom -work work -2002 -explicit {C:\altera\13.0sp1\IL2203\LAB4\occ2.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -106,18 +65,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading entity FSM
 -- Loading entity gpio
 -- Loading entity memory
-
-} {} {}} C:/altera/13.0sp1/IL2203/LAB4/datapath.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/datapath.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_SIGNED
--- Loading package microcode
--- Compiling entity DATAPATH_STRUCTURAL
--- Compiling architecture STRUCTURE of DATAPATH_STRUCTURAL
 
 } {} {}} C:/altera/13.0sp1/IL2203/LAB4/test_bench_ALU.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IL2203/LAB4/test_bench_ALU.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012

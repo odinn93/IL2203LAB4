@@ -20,7 +20,7 @@ begin
             tmp   <= '0';
         elsif (clk'event and clk = '1') then
             count <= count+1;
-            if (count = 2e4) then
+            if (count = 2000e4) then
                 tmp <= NOT tmp;
                 count <= 1;
             end if;
