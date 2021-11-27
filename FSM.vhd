@@ -22,7 +22,7 @@ end FSM;
 
 architecture behave of FSM is
     signal uPC                  :   std_logic_vector(2 downto 0);
-    signal Instruction_Register :   std_logic_vector (15 downto 0):=(others=>'0');
+    signal Instruction_Register :   std_logic_vector(15 downto 0):=(others=>'0');
 
     --DATAPATH FILE
     signal IE,OE                        :   std_logic;

@@ -51,7 +51,13 @@ ARCHITECTURE fake OF fake_memory IS
 		signal clk, reset : std_logic := '0';
 		signal RW : std_logic;
 		signal led_output : std_logic_vector(15 downto 0);
-	
+
+		--Test
+		signal RW_tmp : std_logic;
+  		signal Din_tmp, Dout_tmp, address_tmp: std_logic_vector(15 downto 0);
+  		signal ie_activator, oe_activator, wren_activator: std_logic;
+		--
+
 		--File variable
 		--file memory_hex_output : text;
 		--signal initialized : std_logic := '0';
@@ -87,12 +93,31 @@ ARCHITECTURE fake OF fake_memory IS
 		port map (
 		  clk     => clk,
 		  rst   => reset,
-		  Din     => Din,
-		  address => address,
-		  Dout    => Dout,
-		  RW      => RW,
-		  test_alu => led_output
+		  Din     => Din_tmp,
+		  address => address_tmp,
+		  Dout    => Dout_tmp,
+		  RW      => RW_tmp
+		  --test_alu => led_output,
+		  --Z_Flag_test => Z_Flag,
+		  --N_Flag_test => N_Flag,
+		  --O_Flag_test => O_Flag
 		);
+
+		--test
+		gpio_inst: entity work.gpio(behave)
+  		generic map (
+      	N => 16
+  		)
+  		port map (
+      		clk   => clk,
+      		rst => reset,
+      		ie    => ie_activator,
+      		oe    => oe_activator,
+      		Din   => Dout_tmp,
+      		Dout  => led_output
+  		);
+		--
+
 	
 		PROC : process
 			variable I : integer := 0;
@@ -101,13 +126,18 @@ ARCHITECTURE fake OF fake_memory IS
 			reset <= '1';
 			wait until rising_edge(clk);
 			reset <= '0';
+			oe_activator <= '1';
 			while (I < 255) loop
-			    Din <= RAM(I);
+			    Din_tmp <= RAM(I);
+				wait for 1 ns;
+				ie_activator <= '1';
+				wait for 1 ns;
 			    I := I + 1;
 			    wait until rising_edge(clk);
+				wren_activator <= (not RW_tmp);
 			    wait until rising_edge(clk);
 			    wait until rising_edge(clk);
 			    wait until rising_edge(clk);
 			end loop;
-		end process;
+    	end process;
 END fake;

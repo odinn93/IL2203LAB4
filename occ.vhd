@@ -12,18 +12,18 @@ entity occ is
       clk_out : out std_logic;
       Z_Flag, N_Flag, O_Flag : out std_logic --TESTING
   );
-end entity;s
+end entity;
 
 architecture top of occ is
 
-  function and_reduct(slv : in std_logic_vector) return std_logic is
-      variable res_v : std_logic := '1';  -- Null slv vector will also return '1'
-  begin
-      for i in slv'range loop
-      res_v := res_v and slv(i);
-      end loop;
-      return res_v;
-  end function;
+  --function and_reduct(slv : in std_logic_vector) return std_logic is
+  --    variable res_v : std_logic := '1';  -- Null slv vector will also return '1'
+  --begin
+  --    for i in slv'range loop
+  --    res_v := res_v and slv(i);
+  --    end loop;
+  --    return res_v;
+  --end function;
 
   constant N: integer := 16;
   constant M: integer := 3;
